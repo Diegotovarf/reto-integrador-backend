@@ -1,0 +1,39 @@
+{
+  "afd": {
+    "descripcion": "Cadenas binarias que terminan en 01",
+    "estados": ["q0", "q1", "q2"],
+    "alfabeto": ["0", "1"],
+    "inicial": "q0",
+    "finales": ["q2"],
+    "transiciones": {
+      "q0": {"0": "q1", "1": "q0"},
+      "q1": {"0": "q1", "1": "q2"},
+      "q2": {"0": "q1", "1": "q0"}
+    },
+    "cadena": "1101"
+  },
+  "afnd": {
+    "descripcion": "Cadenas sobre {a, b} que terminan en ab",
+    "estados": ["q0", "q1", "q2"],
+    "alfabeto": ["a", "b"],
+    "inicial": "q0",
+    "finales": ["q2"],
+    "transiciones": {
+      "q0": {"a": ["q0", "q1"], "b": ["q0"]},
+      "q1": {"b": ["q2"]}
+    },
+    "cadena": "aab"
+  },
+  "afnd-e": {
+    "descripcion": "Lenguaje a*b*: primero cualquier cantidad de a y luego cualquier cantidad de b",
+    "estados": ["q0", "q1"],
+    "alfabeto": ["a", "b"],
+    "inicial": "q0",
+    "finales": ["q1"],
+    "transiciones": {
+      "q0": {"a": ["q0"], "ε": ["q1"]},
+      "q1": {"b": ["q1"]}
+    },
+    "cadena": "aabb"
+  }
+}
