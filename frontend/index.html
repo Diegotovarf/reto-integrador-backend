@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laboratorio de Autómatas, Rutas y Complejidad</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='72' font-size='64' text-anchor='middle' fill='white'>∑</text></svg>">
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Chart.js: gráficas de barras y de líneas del módulo 2 y 3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="encabezado">
+    <div class="marca">
+      <span class="logo">∑</span>
+      <div>
+        <h1>Laboratorio de Autómatas, Rutas y Complejidad</h1>
+        <p>Reto Integrador · Lenguajes de Comunicación</p>
+      </div>
+    </div>
+    <details class="conexion">
+      <summary><span id="estado-api" class="punto-estado">Revisando backend…</span></summary>
+      <form id="form-api" class="panel-api">
+        <label>URL del backend
+          <input name="url" placeholder="http://localhost:8000">
+        </label>
+        <button class="primario">Guardar y reconectar</button>
+        <p class="ayuda">Arranca el backend con <code>uvicorn app.main:app --reload</code></p>
+      </form>
+    </details>
+  </header>
+
+  <nav class="pestanas" aria-label="Módulos del sistema">
+    <button type="button" data-tab="inicio"><b>🏠</b> Inicio</button>
+    <button type="button" data-tab="modulo1"><b>1</b> Lenguajes y autómatas</button>
+    <button type="button" data-tab="modulo2"><b>2</b> Logística y rutas</button>
+    <button type="button" data-tab="modulo3"><b>3</b> Escalabilidad y benchmark</button>
+  </nav>
+
+  <main>
+    <section id="inicio" class="modulo">
+      <div class="bienvenida">
+        <h2>¡Bienvenido! 👋</h2>
+        <p>Este es un laboratorio para <b>experimentar</b> con tres temas de computación: máquinas que leen palabras,
+          búsqueda de rutas en un mapa y qué tan rápido es un programa. <b>No necesitas saber programar:</b>
+          cada sección trae ejemplos listos y te explica el resultado con palabras sencillas.</p>
+      </div>
+
+      <h3 class="titulo-seccion">¿Qué puedes hacer aquí?</h3>
+      <div class="rejilla-modulos">
+        <article class="tarjeta modulo-tarjeta">
+          <span class="icono-modulo">🔤</span>
+          <h3>1 · Lenguajes y autómatas</h3>
+          <p>Juega con palabras (voltearlas, repetirlas, combinarlas) y prueba <b>máquinas que leen una palabra letra por letra</b> y deciden si la aceptan o no.</p>
+          <p class="ejemplo-vida">🧩 Como el torniquete del metro: solo te deja pasar si sigues las reglas.</p>
+          <button type="button" class="primario" data-ir="modulo1">Ir al módulo 1</button>
+        </article>
+        <article class="tarjeta modulo-tarjeta">
+          <span class="icono-modulo">🗺️</span>
+          <h3>2 · Logística y rutas</h3>
+          <p>Busca el <b>camino entre dos puntos de un mapa</b> y compara 6 estrategias distintas: cuál encuentra la ruta más barata y cuál trabaja menos.</p>
+          <p class="ejemplo-vida">🧩 Como Google Maps eligiendo la mejor ruta para llegar a la escuela.</p>
+          <button type="button" class="primario" data-ir="modulo2">Ir al módulo 2</button>
+        </article>
+        <article class="tarjeta modulo-tarjeta">
+          <span class="icono-modulo">⏱️</span>
+          <h3>3 · Escalabilidad y benchmark</h3>
+          <p>Pon a <b>competir varios métodos</b> con los mismos datos y mide cuánto tardan y cuánta memoria usan cuando los datos crecen.</p>
+          <p class="ejemplo-vida">🧩 Ordenar 10 cartas es fácil; ordenar 1,000 depende mucho del método que uses.</p>
+          <button type="button" class="primario" data-ir="modulo3">Ir al módulo 3</button>
+        </article>
+      </div>
+
+      <div class="rejilla-2">
+        <div class="tarjeta">
+          <h3>¿Cómo se usa?</h3>
+          <ol class="pasos grandes">
+            <li><b>Elige un módulo</b> en las pestañas de arriba.</li>
+            <li><b>Llena el formulario</b> o deja los datos de ejemplo que ya vienen escritos.</li>
+            <li>Presiona el <b>botón morado</b> (por ejemplo, "Evaluar cadena").</li>
+            <li>Lee el recuadro azul <b>💡 ¿Qué pasó?</b>: ahí se explica el resultado en palabras.</li>
+          </ol>
+          <p class="ayuda">Si te equivocas en algún dato, aparece un aviso rojo que te dice qué corregir.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>¿Cómo está construido?</h3>
+          <div class="capas">
+            <div class="capa backend"><b>1. Cómputo (backend)</b><span>Programa en Python que hace los cálculos: recorre autómatas, busca rutas y mide tiempos.</span></div>
+            <div class="capa explicacion-capa"><b>2. Interpretación y explicación</b><span>Convierte los números en un texto que explica qué pasó y la teoría detrás.</span></div>
+            <div class="capa frontend"><b>3. Interfaz gráfica (frontend)</b><span>Esta página: formularios, diagramas, tablas y gráficas.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <details class="tarjeta glosario">
+        <summary>📚 Glosario: palabras que vas a ver</summary>
+        <dl>
+          <dt>Alfabeto (Σ)</dt><dd>Las letras o símbolos permitidos. Ejemplo: {a, b} o {0, 1}.</dd>
+          <dt>Cadena o palabra (w)</dt><dd>Una secuencia de letras del alfabeto, como <code>abba</code>.</dd>
+          <dt>ε (épsilon)</dt><dd>La palabra vacía: una palabra sin ninguna letra.</dd>
+          <dt>Lenguaje (L)</dt><dd>Un conjunto (una lista) de palabras, como {a, ab, abb}.</dd>
+          <dt>Autómata</dt><dd>Una máquina que lee una palabra letra por letra y al final dice si la acepta o la rechaza.</dd>
+          <dt>Estado</dt><dd>Cada círculo del diagrama: la "situación" en la que está la máquina.</dd>
+          <dt>Estado final</dt><dd>Círculo doble. Si la máquina termina ahí, la palabra se acepta.</dd>
+          <dt>Transición</dt><dd>Una flecha: "si estoy en q0 y leo una a, me muevo a q1".</dd>
+          <dt>Grafo</dt><dd>Un mapa hecho de puntos (nodos) unidos por líneas (aristas).</dd>
+          <dt>Peso o costo</dt><dd>El número sobre cada línea: lo que cuesta recorrerla (distancia, tiempo, dinero).</dd>
+          <dt>Heurística</dt><dd>Una "corazonada" o estimación de qué tan lejos falta para llegar al destino.</dd>
+          <dt>Algoritmo</dt><dd>Una receta: una lista de pasos para resolver un problema.</dd>
+          <dt>Complejidad O(n)</dt><dd>Cómo crece el trabajo cuando crecen los datos. O(n²) crece mucho más rápido que O(n log n).</dd>
+          <dt>P y NP</dt><dd>P son los problemas que una computadora resuelve rápido. Los NP-difíciles, como el Agente Viajero, se vuelven lentísimos al crecer.</dd>
+        </dl>
+      </details>
+    </section>
+
+    <section id="modulo1" class="modulo" hidden>
+      <div class="intro">
+        <h2>Módulo 1 · Traductor de lenguajes y verificador de reglas</h2>
+        <p>Trabaja con palabras y con máquinas que deciden si una palabra cumple ciertas reglas.</p>
+      </div>
+      <div class="contenido"></div>
+    </section>
+
+    <section id="modulo2" class="modulo" hidden>
+      <div class="intro">
+        <h2>Módulo 2 · Asistente de logística y optimización</h2>
+        <p>Busca rutas en un mapa y compara qué estrategia de búsqueda funciona mejor.</p>
+      </div>
+      <div class="contenido"></div>
+    </section>
+
+    <section id="modulo3" class="modulo" hidden>
+      <div class="intro">
+        <h2>Módulo 3 · Auditoría de escalabilidad y benchmark</h2>
+        <p>Pon a competir algoritmos y observa qué pasa con su velocidad cuando los datos crecen.</p>
+      </div>
+      <div class="contenido"></div>
+    </section>
+  </main>
+
+  <footer class="pie">Frontend del Reto Integrador · consume la API de FastAPI del Checkpoint 1</footer>
+  <div id="avisos" aria-live="polite"></div>
+</body>
+</html>

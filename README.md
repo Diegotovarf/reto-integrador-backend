@@ -1,16 +1,29 @@
-# Reto Integrador — Backend
+# Reto Integrador — Laboratorio de Autómatas, Rutas y Complejidad
 
-API en FastAPI del producto para que estudiantes de nuevo ingreso experimenten con autómatas, optimización de rutas y complejidad algorítmica.
+Aplicación web para que estudiantes de nuevo ingreso experimenten con autómatas, optimización de rutas y complejidad algorítmica.
+
+| Entrega | Contenido |
+|---|---|
+| Checkpoint 1 · Backend | API en FastAPI (`app/`, `tests/`) |
+| Checkpoint 2 · Frontend | Interfaz gráfica en HTML, CSS y JavaScript ([`frontend/`](frontend/README.md)) |
 
 ## Cómo correrlo
 
+Se necesitan dos terminales abiertas en la raíz del repositorio:
+
 ```bash
-cd Reto-Integrador/backend
+# Terminal 1 · backend (http://localhost:8000)
 pip install -r requirements.txt
 uvicorn app.main:app --reload
+
+# Terminal 2 · frontend (http://localhost:5500)
+cd frontend
+python -m http.server 5500
 ```
 
-- Documentación interactiva: http://localhost:8000/docs (cada endpoint trae un ejemplo listo para probar)
+Abre **http://localhost:5500** en el navegador. Los detalles de la interfaz están en [`frontend/README.md`](frontend/README.md).
+
+- Documentación interactiva de la API: http://localhost:8000/docs (cada endpoint trae un ejemplo listo para probar)
 - Pruebas: `python -m pytest`
 
 ## Arquitectura
@@ -22,6 +35,7 @@ Las tres capas del reto quedan separadas en carpetas:
 | Cómputo determinista | `app/services/` | Los algoritmos, sin dependencias de FastAPI |
 | Interpretación y explicabilidad | `app/explicaciones/` | Convierte cada resultado en un resumen y su base teórica |
 | API (la consume el frontend) | `app/routers/`, `app/schemas/` | Endpoints y validación de entradas |
+| Interfaz gráfica (GUI) | `frontend/` | Formularios, diagramas, tablas y gráficas que consumen la API |
 
 ## Formato de respuesta
 
